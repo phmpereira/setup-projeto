@@ -28,7 +28,7 @@ if [ $? -ne 0 ]; then
   exit 1
 fi
 
-echo -e "${BLUE}✅ Tabela truncada com sucesso!${NC}"
+echo -e "${GREEN}✅ Tabela truncada com sucesso!${NC}"
 
 # 2. Rodar o .jar localmente
 echo -e "${YELLOW}🎬 Executando o .jar ${JAR_PATH}...${NC}"
