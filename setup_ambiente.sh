@@ -42,7 +42,7 @@ fi
 
 # Verificar Java
 echo -e "${YELLOW}🧪 Verificando instalação do Java...${NC}"
-java -version
+java -version &>/dev/nul
 if [ $? = 0 ]; then
    echo -e "${GREEN}✔️ Java já está instalado!${NC}\n"
 else
@@ -78,13 +78,24 @@ else
    echo -e "${GREEN}✅ Docker instalado e iniciado com sucesso!\n${NC}"
 fi
 
+# Verificar Docker Compose
+echo -e "${YELLOW}🧪 Verificando instalação do Docker Compose...${NC}"
+docker compose version &>/dev/null
+if [ $? = 0 ]; then
+   echo -e "${GREEN}✔️ Docker Compose já está instalado!${NC}\n"
+else
+   echo -e "${YELLOW}⬇️ Instalando Docker Compose CLI plugin...${NC}"
+   sudo apt install docker-compose-plugin -y
+   echo -e "${GREEN}✅ Docker Compose instalado com sucesso!\n${NC}"
+fi
+
 # Clonar repositório
 echo -e "${YELLOW}📁 Verificando repositório VITA...${NC}"
 if [ -d "VITA" ]; then
    echo -e "${YELLOW}🔁 Repositório já clonado. Pulando etapa de clonagem.${NC}\n"
 else
    echo -e "${YELLOW}⬇️ Clonando repositório do projeto VITA...${NC}"
-   git clone https://github.com/WhenSix/VITA.git
+   git clone https://github.com/WhenSix/VITA.git &>/dev/null
    echo -e "${GREEN}✅ Repositório clonado com sucesso!\n${NC}"
 fi
 
