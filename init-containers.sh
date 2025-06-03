@@ -19,7 +19,7 @@ fi
 
 # Etapa 1: Construir imagens
 echo -e "${YELLOW}Construindo imagens Docker...${NC}"
-docker-compose build
+sudo docker-compose build
 
 if [ $? -eq 0 ]; then
     echo -e "${GREEN}Imagens Docker construídas com sucesso!${NC}"
@@ -30,11 +30,11 @@ fi
 
 # Etapa 2: Subir os containers
 echo -e "${YELLOW}Subindo os containers com docker-compose...${NC}"
-docker-compose up -d
+sudo docker-compose up -d
 
 if [ $? -eq 0 ]; then
     echo -e "${GREEN}Containers iniciados com sucesso!${NC}"
-    docker ps
+    sudo docker ps
 else
     echo -e "${RED}Erro ao iniciar os containers.${NC}"
     exit 1
