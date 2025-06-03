@@ -21,7 +21,7 @@ echo -e "${BLUE}🚀 Iniciando o script...${NC}"
 # 1. Truncate na tabela dentro do container MySQL
 echo -e "${YELLOW}🧹 Limpando a tabela ${TABLE_NAME} no banco ${DB_NAME} dentro do container ${CONTAINER_NAME}...${NC}"
 
-docker exec -i $CONTAINER_NAME mysql -u$DB_USER -p$DB_PASS $DB_NAME -e "TRUNCATE TABLE $TABLE_NAME;"
+sudo docker exec -i $CONTAINER_NAME mysql -u$DB_USER -p$DB_PASS $DB_NAME -e "TRUNCATE TABLE $TABLE_NAME;"
 
 if [ $? -ne 0 ]; then
   echo -e "${RED}❌ Erro ao truncar a tabela.${NC}"
@@ -33,7 +33,7 @@ echo -e "${GREEN}✅ Tabela truncada com sucesso!${NC}"
 # 2. Rodar o .jar localmente
 echo -e "${YELLOW}🎬 Executando o .jar ${JAR_PATH}...${NC}"
 
-java -jar $JAR_PATH
+sudo java -jar $JAR_PATH
 
 if [ $? -ne 0 ]; then
   echo -e "${RED}❌ Erro ao executar o .jar.${NC}"
