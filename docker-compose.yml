@@ -16,18 +16,13 @@ services:
       - mysql_data:/var/lib/mysql
 
   nodejs-app:
-    build: ./whensix-node
+    build: ./VITA
     container_name: whensix-node-container
     restart: always
     ports:
       - "3000:3000"
     depends_on:
       - mysql
-    environment:
-      DB_HOST: mysql
-      DB_USER: whensix
-      DB_PASSWORD: urubu100
-      DB_NAME: whensix
 
   java-app:
     build: ./whensix-projeto
@@ -37,11 +32,6 @@ services:
       - "8080:8080"
     depends_on:
       - mysql
-    environment:
-      DB_HOST: mysql
-      DB_USER: whensix
-      DB_PASSWORD: urubu100
-      DB_NAME: whensix
 
 volumes:
   mysql_data:
